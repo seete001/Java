@@ -12,12 +12,9 @@ public class TaskList{
     public boolean add_task(String task){
      
         if(counter >= tasks.length){
-            System.out.println("Task List is full.");
             return false;
         }
-     
         tasks[counter] = task;
-        System.out.println("Successfully added.");
         counter++;
         return true;
     }
@@ -25,7 +22,6 @@ public class TaskList{
     public boolean remove_task(int index){
      
         if(index - 1< 0 || index -1 >= counter){
-            System.out.println("Invalid index!");
             return false;
     
         }
@@ -36,25 +32,34 @@ public class TaskList{
 
         tasks[counter - 1] = null;
         counter--;
-        System.out.println("Successfully removed.");
         return true;
     
     }
 
-    public void display_tasks(){
+    public String display_tasks(){
         if(counter == 0){
-            System.out.println("No Task in the List.");
-            return;
+            return "";
         }
+        StringBuilder sb = new StringBuilder();
         for(int i = 0;i < counter; i++){
-            System.out.println((i+1)+". "+tasks[i]);
+            sb.append((i+1)).append(". ").append(tasks[i]).append("\n");
+            
         }
 
+        return sb.toString();
     }
 
     public int getTaskCount(){
     
         return counter;
+    }
+    
+    public void load(){
+    
+    }
+
+    public void save(){
+    
     }
 
 }
